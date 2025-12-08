@@ -1,0 +1,106 @@
+.contact-view {
+    min-height: 100vh;
+    background: var(--third-color); /* Białe tło */
+    display: flex;
+    justify-content: center;
+    padding: 100px 20px;
+    font-family: 'Inter', sans-serif;
+    position: relative;
+    overflow: hidden;
+}
+
+/* WRAPPER */
+.contact-wrapper {
+    max-width: 900px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    position: relative;
+    z-index: 1;
+}
+
+/* HEADER */
+.contact-header h1 {
+    font-size: 64px;
+    font-weight: 900;
+    text-align: center;
+    letter-spacing: 1px;
+    color: var(--secondary-color);
+}
+
+.contact-header p {
+    font-size: 24px;
+    text-align: center;
+    color: var(--secondary-color);
+}
+
+/* CONTACT CARDS */
+.contact-cards {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.contact-card {
+    flex: 1 1 250px;
+    background: var(--third-color);
+    border-radius: 20px;
+    padding: 50px 30px;
+    text-align: center;
+    color: var(--secondary-color);
+    font-weight: 600;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    position: relative;
+}
+
+.contact-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+}
+
+.contact-card h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: var(--secondary-color);
+}
+
+.contact-card p {
+    font-size: 20px;
+    color: var(--secondary-color);
+}
+
+/* FOOTER */
+.contact-footer p {
+    text-align: center;
+    font-size: 22px;
+    color: var(--secondary-color);
+    line-height: 1.6;
+}
+
+/* SCROLL REVEAL */
+.reveal {
+    opacity: 0;
+    transform: translateY(60px) scale(0.95);
+    transition: all 0.8s cubic-bezier(0.6, 0.05, 0.28, 0.91);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+    .contact-header h1 { font-size: 42px; }
+    .contact-header p { font-size: 18px; }
+
+    .contact-card { padding: 40px 20px; }
+    .contact-card h2 { font-size: 24px; }
+    .contact-card p { font-size: 18px; }
+
+    .contact-footer p { font-size: 18px; }
+}

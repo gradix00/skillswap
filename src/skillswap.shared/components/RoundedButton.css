@@ -1,0 +1,20 @@
+.rounded-btn-component {
+  background: var(--primary-color) !important; 
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease !important;
+}
+
+.rounded-btn-component:hover {
+  background: var(--primary-color-lighter) !important; 
+  transform: translateY(-1px) !important;
+}
+
+.rounded-btn-component:active {
+  transform: translateY(0) !important;
+}

@@ -1,0 +1,15 @@
+.btn-only-text {
+  background: none;
+  border: none;
+  color: var(--primary-color); 
+  font-size: 18px;
+  font-weight: 400;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: color 0.2s ease;
+}
+
+.btn-only-text:hover {
+  color: var(--primary-color-lighter);
+}

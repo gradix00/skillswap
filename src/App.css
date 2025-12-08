@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 .App-logo {
@@ -21,11 +22,28 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: white; 
 }
 
 .App-link {
   color: #61dafb;
+}
+
+:root{
+  /* Parameters */
+  --sidebar-width: 280px;
+
+  /* Colors */
+  --primary-color: #0047AB; 
+  --secondary-color: #f97316; 
+  --third-color: #FFFFFF;
+  --light-gray: #E3E3E3;
+  --dim-gray: #B1B1B1;
+  --dark-gray: #2B2B2B;
+  --primary-color-lighter: #0b5ed7;
+
+  /* Fonts */
+  --font-size: 1.5rem;
 }
 
 @keyframes App-logo-spin {
