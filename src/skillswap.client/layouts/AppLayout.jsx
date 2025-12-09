@@ -1,4 +1,5 @@
 import './AppLayout.css';
+import Cookies from 'js-cookie';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, Outlet, useLocation } from 'react-router-dom';
 import { Bell, LogOut } from "lucide-react"; 
@@ -7,11 +8,6 @@ import { useAuth } from '../../skillswap.shared/components/authentication/AuthCo
 import WebLogo from '../../resources/images/skillswap.png';
 import RoundedButton from '../../skillswap.shared/components/RoundedButton';
 import AccountIcon from '../../resources/images/account-icon.png';
-
-const SIMULATED_SESSION = { 
-    user: { id: 1, email: 'test@example.com' },
-    profile: { firstname: 'Adam', lastname: 'Kowalczuk' }
-};
 
 export function AppLayout() {
     document.title = "Ucz się od innych zupełnie za darmo - SkillSwap";
@@ -32,30 +28,26 @@ export function AppLayout() {
     };
 
     const handleSignOut = () => {
-        setUser(null);
-        setProfile(null);
-        navigate('/');
+        Cookies.remove('skillswap-user');
+        const delayInMilliseconds = 300; 
+
+        setTimeout(() => {
+            window.location.reload();
+        }, delayInMilliseconds);
     };
 
     useEffect(() => {
+        if(!auth)
+            return;
+
         let isMounted = true;
         
         const checkAuthStatus = async () => {
             setIsLoading(true);
             try {
-                const sessionExists = SIMULATED_SESSION.user;
+                if(auth?.session != null)
+                    setUser(auth.session)
 
-                if (sessionExists) {
-                    if (isMounted) {
-                        setUser(SIMULATED_SESSION.user);
-                        setProfile(SIMULATED_SESSION.profile);
-                    }
-                } else {
-                    if (isMounted) {
-                        setUser(null);
-                        setProfile(null);
-                    }
-                }
             } catch (error) {
                 console.error("Błąd ładowania sesji:", error);
                 if (isMounted) {

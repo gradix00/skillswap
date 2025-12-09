@@ -25,7 +25,7 @@ export function LoginView() {
             sameSite: 'strict'
         });
 
-        navigate('/app');
+        window.location.replace('/app');
     };
 
     return (
