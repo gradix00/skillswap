@@ -32,6 +32,7 @@
 :root{
   /* Parameters */
   --sidebar-width: 280px;
+  --card-padding: 20px;
 
   /* Colors */
   --primary-color: #0047AB; 

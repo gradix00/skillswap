@@ -1,0 +1,63 @@
+.sidebar-tabs-container {
+    height: 100%; 
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    overflow-y: hidden;
+    box-sizing: border-box;
+}
+
+.tab-navigation-header {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 2px solid #ccc;
+    margin-bottom: 10px;
+    flex-shrink: 0; 
+}
+
+.tab-button {
+    flex-grow: 1;
+    padding: 10px 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    color: #888;
+    transition: color 0.3s, border-bottom 0.3s;
+}
+
+.tab-button.active {
+    color: var(--secondary-color); 
+    border-bottom: 2px solid var(--secondary-color);
+}
+
+.sidebar-content-area-wrapper {
+    overflow: hidden; 
+    flex-grow: 1; 
+}
+
+.sidebar-content-area {
+    display: flex;
+    width: 200%; 
+    height: 100%;
+    transition: transform 0.35s ease-out; 
+}
+
+.sidebar-content-area.matches {
+    transform: translateX(0%); 
+}
+
+.sidebar-content-area.messages {
+    transform: translateX(-50%); 
+}
+
+.tab-content {
+    width: 50%;
+    flex-shrink: 0; 
+    height: 100%;
+    padding-left: 0; 
+    padding-right: 0;
+}

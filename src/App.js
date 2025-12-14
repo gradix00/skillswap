@@ -1,23 +1,28 @@
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { NotificationContainer } from 'react-notifications';
+import React from 'react';
 
-//Layouts
-import ClientLayoutView from './skillswap.client/layouts/Layout';
-import ClientAppLayoutView from './skillswap.client/layouts/AppLayout';
+// Layouts
+import ClientLayoutView from './skillswap.client/layouts/Layout'; 
+import ClientAppLayoutView from './skillswap.client/layouts/AppLayout'; 
+import ClientInternalAppLayoutView from './skillswap.client/layouts/InternalAppLayout'; 
 
-//Client
+// Client
 import ClientHomeView from './skillswap.client/pages/HomeView';
 import ClientAboutView from './skillswap.client/pages/AboutView';
 import ClientContactView from './skillswap.client/pages/ContactView';
+import ClientProfileView from './skillswap.client/pages/app/ProfileView'; 
+import ClientSwipeView from './skillswap.client/pages/app/SwipeView'; 
 
-//Shared
+// Shared
 import SharedLoginView from './skillswap.shared/pages/LoginView';
 import SharedRegisterView from './skillswap.shared/pages/RegisterView';
 
-//Authorization
+// Authorization
 import AuthContext from './skillswap.shared/components/authentication/AuthContext';
 import AuthorizedView from './skillswap.shared/components/authentication/AuthorizedView';
+
 
 function App() {
   return (
@@ -25,43 +30,32 @@ function App() {
         <div className='App'>
           <AuthContext>
             <Routes>
-              //Client public views
+            
               <Route path="/" element={<ClientLayoutView />}>
-
-                //Unauthorized views
                 <Route index element={<ClientHomeView />} />
                 <Route path='/about' element={<ClientAboutView/>}/>
                 <Route path='/contact' element={<ClientContactView/>}/>
-
-                //Authorized views
-                <Route element={<AuthorizedView />}>
-                  //Account Layout
-                  {/* <Route path="/account/listings/favorite" element={<ClientFavoriteListingsView />} /> */}
-                </Route>
               </Route>
 
-              //Client authorized views
               <Route path="/app" element={<ClientAppLayoutView />}>
-
-                //Authorized views
                 <Route element={<AuthorizedView />}>
-                  <Route index element={<ClientAboutView />} />
+                    <Route element={<ClientInternalAppLayoutView />}>
+                        <Route index element={<ClientSwipeView />} /> 
+                        <Route path='profile/:guid' element={<ClientProfileView/>}/> 
+                    </Route>
                 </Route>
-
               </Route>
 
-              Shared views
               <Route path='/shared/login' element={<SharedLoginView/>}/>
               <Route path='/shared/register' element={<SharedRegisterView/>}/>
 
-              Not found view - 404
+              {/* Not found view - 404 */}
               {/* <Route path='*' element={<SharedNotFoundView/>}/> */}
             </Routes>
           </AuthContext>
         </div>
       <NotificationContainer />
     </BrowserRouter>
-    // <CounterView/>
   );
 }
 
