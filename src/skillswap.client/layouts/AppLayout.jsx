@@ -1,13 +1,16 @@
+// src/components/AppLayout/AppLayout.jsx
 import './AppLayout.css';
 import Cookies from 'js-cookie';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, Outlet, useLocation } from 'react-router-dom';
 import { Bell, LogOut } from "lucide-react"; 
-import { BiNotepad, BiWrench, BiUser } from 'react-icons/bi';
 import { useAuth } from '../../skillswap.shared/components/authentication/AuthContext';
 import WebLogo from '../../resources/images/skillswap.png';
 import RoundedButton from '../../skillswap.shared/components/RoundedButton';
 import AccountIcon from '../../resources/images/account-icon.png';
+import NotificationDropdown from './../components/NotificationDropdown'; 
+import { MockMessageData } from './../../skillswap.shared/data/MessagesData'; 
+import { MockMatchData } from './../../skillswap.shared/data/UsersData'; 
 
 export function AppLayout() {
     document.title = "Ucz się od innych zupełnie za darmo - SkillSwap";
@@ -16,8 +19,35 @@ export function AppLayout() {
     const auth = useAuth(); 
 
     const [user, setUser] = useState(null); 
-    const [profile, setProfile] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
+    const [showNotifications, setShowNotifications] = useState(false); 
+
+    const piotr = MockMatchData.AllMatches.find(u => u.name === 'Piotr');
+    const piotrGuid = piotr ? piotr.guid : null;
+
+    const getUnansweredCount = () => {
+        if (!piotrGuid) return 0;
+        const chats = MockMessageData.getChats();
+        let count = 0;
+        
+        chats.forEach(chat => {
+            if (chat.messages.length > 0) {
+                const lastMessage = chat.messages[chat.messages.length - 1];
+                if (lastMessage.senderId !== piotrGuid) {
+                    count++;
+                }
+            }
+        });
+        return count;
+    };
+    
+    const unansweredCount = getUnansweredCount();
+
+    const toggleNotifications = (e) => {
+        e.stopPropagation(); 
+        setShowNotifications(prev => !prev);
+    };
+
 
     const navigateToView = (url) => {
         navigate(url);
@@ -52,7 +82,6 @@ export function AppLayout() {
                 console.error("Błąd ładowania sesji:", error);
                 if (isMounted) {
                     setUser(null);
-                    setProfile(null);
                 }
             } finally {
                 if (isMounted) {
@@ -64,13 +93,14 @@ export function AppLayout() {
         checkAuthStatus();
         
         return () => {
-            isMounted = false; // Cleanup
+            isMounted = false; 
         };
         
     }, [auth]); 
 
     useEffect(() => {
         window.scrollTo(0, 0);
+        setShowNotifications(false); 
     }, [location.pathname]);
 
     
@@ -84,6 +114,13 @@ export function AppLayout() {
     
     return (
         <div id="app-layout">
+            
+            {showNotifications && (
+                <NotificationDropdown 
+                    piotrGuid={piotrGuid} 
+                    onClose={() => setShowNotifications(false)}
+                />
+            )}
 
             <header className="desktop-header minimal-style">
                 <div className="left-section">
@@ -98,12 +135,18 @@ export function AppLayout() {
 
                 {user ? (
                     <div className="right-section auth-icons">
-                        <button 
-                            className="icon-button"
-                            aria-label="Powiadomienia"
-                        >
-                            <Bell size={20} />
-                        </button>
+                        <div className="notifications-container"> 
+                            <button 
+                                className="icon-button notification-button"
+                                onClick={toggleNotifications}
+                                aria-label="Powiadomienia"
+                            >
+                                <Bell size={20} />
+                                {unansweredCount > 0 && (
+                                    <span className="notification-badge">{unansweredCount}</span>
+                                )}
+                            </button>
+                        </div>
                         
                         <button
                             className="profile-icon-button"
@@ -144,12 +187,18 @@ export function AppLayout() {
                 
                 {user ? (
                     <div className="mobile-header-right">
-                         <button 
-                            className="icon-button"
-                            aria-label="Powiadomienia"
-                        >
-                            <Bell size={20} />
-                        </button>
+                         <div className="notifications-container">
+                            <button 
+                                className="icon-button notification-button"
+                                onClick={toggleNotifications}
+                                aria-label="Powiadomienia"
+                            >
+                                <Bell size={20} />
+                                {unansweredCount > 0 && (
+                                    <span className="notification-badge">{unansweredCount}</span>
+                                )}
+                            </button>
+                        </div>
                         <button
                             className="profile-icon-button"
                             onClick={navigateToMyAccount}
