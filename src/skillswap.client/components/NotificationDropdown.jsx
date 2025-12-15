@@ -99,7 +99,7 @@ export default function NotificationDropdown({ piotrGuid, onClose }) {
     return (
         <div className="notification-dropdown-overlay">
             <div className="notification-dropdown-panel" ref={dropdownRef}>
-                <h4 className="dropdown-title">🔔 Wiadomości oczekujące na odpowiedź</h4>
+                <h4 className="dropdown-title">Twoje powiadomienia</h4>
                 <hr />
                 {unansweredConversations.length > 0 ? (
                     unansweredConversations.map((conv, index) => (

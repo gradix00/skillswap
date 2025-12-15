@@ -5,20 +5,14 @@ import { useState } from 'react';
 import { RoundedTextBox } from '../components/RoundedTextBox';
 import RoundedButton from '../components/RoundedButton';
 import PeopleLearn from '../../resources/images/people-learn.png';
+import { MockMatchData } from './../data/UsersData';
 
 export function LoginView() {
     document.title = "Logowanie - SkillSwap";
     const navigate = useNavigate();
 
     const loginFunc = () => {
-         const userData = {
-            id: 1,
-            guid: crypto.randomUUID(),
-            first_name: "Adrian",
-            last_name: "Puchalski",
-            username: "Adrian77",
-            birth_date: new Date()
-        };
+         const userData = MockMatchData.getByGuid('c1r1s1-m4n-4a7b-8c9d-0e1f2a3b4c5d');
 
         Cookies.set('skillswap-user', JSON.stringify(userData), {
             expires: 365, 

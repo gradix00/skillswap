@@ -13,6 +13,7 @@ import ClientHomeView from './skillswap.client/pages/HomeView';
 import ClientAboutView from './skillswap.client/pages/AboutView';
 import ClientContactView from './skillswap.client/pages/ContactView';
 import ClientProfileView from './skillswap.client/pages/app/ProfileView'; 
+import ClientMyProfileView from './skillswap.client/pages/app/MyProfileView'; 
 import ClientSwipeView from './skillswap.client/pages/app/SwipeView'; 
 
 // Shared
@@ -43,6 +44,8 @@ function App() {
                         <Route index element={<ClientSwipeView />} /> 
                         <Route path='profile/:guid' element={<ClientProfileView/>}/> 
                     </Route>
+
+                    <Route path='/app/my/account' element={<ClientMyProfileView/>}/> 
                 </Route>
               </Route>
 

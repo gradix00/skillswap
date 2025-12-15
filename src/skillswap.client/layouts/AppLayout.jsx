@@ -1,13 +1,10 @@
-// src/components/AppLayout/AppLayout.jsx
 import './AppLayout.css';
-import Cookies from 'js-cookie';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { useNavigate, Outlet, useLocation } from 'react-router-dom';
 import { Bell, LogOut } from "lucide-react"; 
 import { useAuth } from '../../skillswap.shared/components/authentication/AuthContext';
 import WebLogo from '../../resources/images/skillswap.png';
 import RoundedButton from '../../skillswap.shared/components/RoundedButton';
-import AccountIcon from '../../resources/images/account-icon.png';
 import NotificationDropdown from './../components/NotificationDropdown'; 
 import { MockMessageData } from './../../skillswap.shared/data/MessagesData'; 
 import { MockMatchData } from './../../skillswap.shared/data/UsersData'; 
@@ -22,18 +19,23 @@ export function AppLayout() {
     const [isLoading, setIsLoading] = useState(true);
     const [showNotifications, setShowNotifications] = useState(false); 
 
-    const piotr = MockMatchData.AllMatches.find(u => u.name === 'Piotr');
-    const piotrGuid = piotr ? piotr.guid : null;
+    const piotr = useMemo(() => MockMatchData.AllMatches.find(u => u.name === 'Piotr'), []);
+    
+    const piotrGuid = piotr ? piotr.guid : null; 
 
     const getUnansweredCount = () => {
-        if (!piotrGuid) return 0;
+        const currentUserId = auth?.session?.Guid || piotrGuid; 
+
+        if (!currentUserId) return 0;
+        
         const chats = MockMessageData.getChats();
         let count = 0;
         
         chats.forEach(chat => {
             if (chat.messages.length > 0) {
                 const lastMessage = chat.messages[chat.messages.length - 1];
-                if (lastMessage.senderId !== piotrGuid) {
+                
+                if (lastMessage.senderId !== currentUserId) {
                     count++;
                 }
             }
@@ -41,7 +43,7 @@ export function AppLayout() {
         return count;
     };
     
-    const unansweredCount = getUnansweredCount();
+    const unansweredCount = getUnansweredCount(); 
 
     const toggleNotifications = (e) => {
         e.stopPropagation(); 
@@ -54,34 +56,36 @@ export function AppLayout() {
     };
 
     const navigateToMyAccount = () => {
-        navigate('/account/details');
-    };
-
-    const handleSignOut = () => {
-        Cookies.remove('skillswap-user');
-        const delayInMilliseconds = 300; 
-
-        setTimeout(() => {
-            window.location.reload();
-        }, delayInMilliseconds);
+        navigate('/app/my/account');
     };
 
     useEffect(() => {
-        if(!auth)
+        if (!auth) {
+            setIsLoading(false);
             return;
+        }
 
         let isMounted = true;
         
         const checkAuthStatus = async () => {
             setIsLoading(true);
             try {
-                if(auth?.session != null)
-                    setUser(auth.session)
+                const userGuid = auth.session?.Guid; 
+                
+                let loadedUser = null;
+
+                if (userGuid) {
+                    loadedUser = MockMatchData.getByGuid(userGuid); 
+                }
+                
+                if (isMounted) {
+                    setUser(loadedUser);
+                }
 
             } catch (error) {
-                console.error("Błąd ładowania sesji:", error);
+                console.error("Błąd ładowania sesji/danych użytkownika:", error);
                 if (isMounted) {
-                    setUser(null);
+                    setUser(null); 
                 }
             } finally {
                 if (isMounted) {
@@ -111,7 +115,7 @@ export function AppLayout() {
             </div>
         );
     }
-    
+
     return (
         <div id="app-layout">
             
@@ -153,15 +157,7 @@ export function AppLayout() {
                             onClick={navigateToMyAccount}
                             aria-label="Mój profil"
                         >
-                            <img src={AccountIcon} alt="Avatar użytkownika" className="user-avatar-small" />
-                        </button>
-                        
-                        <button
-                            className="icon-button logout-button"
-                            onClick={handleSignOut}
-                            aria-label="Wyloguj się"
-                        >
-                            <LogOut size={20} />
+                            <img src={user.imageUrl} alt="Avatar użytkownika" className="user-avatar-small" />
                         </button>
                         
                     </div>
@@ -204,15 +200,7 @@ export function AppLayout() {
                             onClick={navigateToMyAccount}
                             aria-label="Mój profil"
                         >
-                            <img src={AccountIcon} alt="Avatar użytkownika" className="user-avatar-small" />
-                        </button>
-
-                        <button
-                            className="icon-button logout-button"
-                            onClick={handleSignOut}
-                            aria-label="Wyloguj się"
-                        >
-                            <LogOut size={20} />
+                            <img src={user.imageUrl} alt="Avatar użytkownika" className="user-avatar-small" />
                         </button>
                     </div>
                 ) : (
