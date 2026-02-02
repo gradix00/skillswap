@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/skillswap-build/static/css/main.9b4dffcc.css",
+    "main.js": "/skillswap-build/static/js/main.6a1f8fef.js",
+    "static/js/453.26c88b1e.chunk.js": "/skillswap-build/static/js/453.26c88b1e.chunk.js",
+    "static/media/adam-man.jpg": "/skillswap-build/static/media/adam-man.44e51cd09e31c3c2920e.jpg",
+    "static/media/michael-man.jpg": "/skillswap-build/static/media/michael-man.98ceacd56f9cfd138fdb.jpg",
+    "static/media/people-background.jpeg": "/skillswap-build/static/media/people-background.fabbfd1b119634bba4ed.jpeg",
+    "static/media/people-learn.png": "/skillswap-build/static/media/people-learn.7a721aabc58d217e6a83.png",
+    "static/media/robert-man.jpg": "/skillswap-build/static/media/robert-man.72d531f64833786e97b6.jpg",
+    "static/media/people-target.jpg": "/skillswap-build/static/media/people-target.1437b38d459d19a6c24b.jpg",
+    "static/media/laura-woman.jpg": "/skillswap-build/static/media/laura-woman.482016bdac5037c17f53.jpg",
+    "static/media/cris-man.jpg": "/skillswap-build/static/media/cris-man.21e0512fd61a387bcc6a.jpg",
+    "static/media/anna-woman.jpg": "/skillswap-build/static/media/anna-woman.fd841c6987e0b3d78d1d.jpg",
+    "static/media/kinga-woman.jpg": "/skillswap-build/static/media/kinga-woman.e23be4026c951c0080c2.jpg",
+    "static/media/ewa-woman.jpg": "/skillswap-build/static/media/ewa-woman.9ada71aaf064f05aec5e.jpg",
+    "static/media/olga-woman.jpg": "/skillswap-build/static/media/olga-woman.97f4fd235f62f5e6c2d3.jpg",
+    "static/media/mateusz-man.jpg": "/skillswap-build/static/media/mateusz-man.742fee96427f44c2a52e.jpg",
+    "static/media/kasia-woman.jpg": "/skillswap-build/static/media/kasia-woman.314a2ed379bb910bbfc0.jpg",
+    "static/media/piotr-man.jpg": "/skillswap-build/static/media/piotr-man.9c5c66649b20abc945de.jpg",
+    "static/media/tasks.png": "/skillswap-build/static/media/tasks.132cee3db99c847dc37e.png",
+    "static/media/skillswap.png": "/skillswap-build/static/media/skillswap.f918189b0848a55dd3cf.png",
+    "index.html": "/skillswap-build/index.html",
+    "main.9b4dffcc.css.map": "/skillswap-build/static/css/main.9b4dffcc.css.map",
+    "main.6a1f8fef.js.map": "/skillswap-build/static/js/main.6a1f8fef.js.map",
+    "453.26c88b1e.chunk.js.map": "/skillswap-build/static/js/453.26c88b1e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9b4dffcc.css",
+    "static/js/main.6a1f8fef.js"
+  ]
+}
