@@ -19,6 +19,7 @@ import ClientSwipeView from './skillswap.client/pages/app/SwipeView';
 // Shared
 import SharedLoginView from './skillswap.shared/pages/LoginView';
 import SharedRegisterView from './skillswap.shared/pages/RegisterView';
+import SharedNotFoundView from './skillswap.shared/pages/NotFoundView';
 
 // Authorization
 import AuthContext from './skillswap.shared/components/authentication/AuthContext';
@@ -52,8 +53,8 @@ function App() {
               <Route path='/shared/login' element={<SharedLoginView/>}/>
               <Route path='/shared/register' element={<SharedRegisterView/>}/>
 
-              {/* Not found view - 404 */}
-              {/* <Route path='*' element={<SharedNotFoundView/>}/> */}
+              // Not found view - 404 
+              <Route path='*' element={<SharedNotFoundView/>}/>
             </Routes>
           </AuthContext>
         </div>

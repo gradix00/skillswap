@@ -23,7 +23,6 @@ export function RegisterView() {
     };
 
     const nextStep = () => {
-        // Dodaj tu walidację, jeśli potrzebna
         setStep(prev => prev + 1);
     };
 
@@ -34,10 +33,7 @@ export function RegisterView() {
     const handleSubmit = () => {
         console.log("Dane do wysłania:", formData);
         alert('Rejestracja zakończona pomyślnie!');
-        // Tutaj logika wysłania danych do API
     };
-
-    // --- RENDEROWANIE ETAPÓW FORMULARZA ---
 
     const renderStepContent = () => {
         switch (step) {

@@ -1,0 +1,27 @@
+.message-container {
+    display: flex;
+    align-items: flex-end;
+    max-width: 90%;
+    will-change: transform, opacity;
+}
+
+.chat-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin: 0 8px;
+}
+
+.message {
+    padding: 10px 15px;
+    border-radius: 18px;
+    position: relative;
+    font-size: 15px;
+}
+
+.message-time {
+    position: absolute;
+    bottom: 2px;
+    font-size: 10px;
+    opacity: 0.6;
+}

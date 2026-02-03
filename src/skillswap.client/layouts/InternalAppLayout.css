@@ -2,16 +2,18 @@
     height: calc(100vh - 71px);
     display: flex; 
     width: 100%;
-    overflow-y: hidden; 
+    overflow: hidden; 
+    background-color: var(--third-color);
 }
 
 .internal-app-layout-sidebar {
     width: 380px; 
     flex-shrink: 0; 
-    border-right: 1px solid #e0e0e0;
+    border-right: 1px solid var(--light-gray);
     height: 100%; 
     overflow-y: auto; 
     background-color: white; 
+    transition: transform 0.3s ease;
 }
 
 .internal-app-layout-main {
@@ -19,4 +21,31 @@
     background-color: #f7f7f7; 
     height: 100%; 
     overflow-y: auto; 
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 768px) {
+    .internal-app-layout-sidebar {
+        width: 100%;
+        display: block;
+    }
+
+    .internal-app-layout-main {
+        display: none; 
+    }
+
+    .internal-app-layout.subview-active .internal-app-layout-sidebar {
+        display: none; 
+    }
+
+    .internal-app-layout.subview-active .internal-app-layout-main {
+        display: flex; 
+        width: 100%;
+        position: fixed; 
+        top: 71px;
+        left: 0;
+        height: calc(100vh - 71px);
+        z-index: 10;
+    }
 }

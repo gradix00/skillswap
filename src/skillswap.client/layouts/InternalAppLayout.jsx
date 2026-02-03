@@ -1,11 +1,14 @@
 import './InternalAppLayout.css';
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import SidebarTabsContainerComponent from '../components/SidebarTabsContainerComponent';
 
 export function InternalAppLayout() {
+    const location = useLocation();
+    const isSubView = location.pathname !== '/app';
+
     return (
-        <div className="internal-app-layout">
+        <div className={`internal-app-layout ${isSubView ? 'subview-active' : ''}`}>
             
             <aside className="internal-app-layout-sidebar">
                 <SidebarTabsContainerComponent />

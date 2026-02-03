@@ -302,7 +302,7 @@
 
 .logout-button:hover {
     background-color: #cc3333;
-    color: white;
+    color: white !important;
 }
 
 .my-profile-view-error {

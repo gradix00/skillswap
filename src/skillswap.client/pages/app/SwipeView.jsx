@@ -2,6 +2,7 @@ import './SwipeView.css';
 import React, { useState, useMemo, useRef, useCallback, useImperativeHandle, forwardRef } from 'react';
 import { MockMatchData } from './../../../skillswap.shared/data/UsersData';
 import { useAuth } from '../../../skillswap.shared/components/authentication/AuthContext';
+import RoundedButton from '../../../skillswap.shared/components/RoundedButton';
 
 const ICON_DISLIKE = '✖';
 const ICON_LIKE = '📚';
@@ -32,9 +33,8 @@ const MatchOverlay = ({ matchedUser, onContinue }) => {
                         <img src={matchedUser.imageUrl} alt={matchedUser.name} className="matched-photo"/>
                     </div>
                 </div>
-                <button className="match-continue-button" onClick={onContinue}>
-                    Super! Dalej.
-                </button>
+                <RoundedButton text='Super! Dalej.'
+                               onClick={onContinue}/>
             </div>
         </div>
     );

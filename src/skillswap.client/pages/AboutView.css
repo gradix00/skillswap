@@ -97,33 +97,13 @@
     animation: neonWave 4s linear infinite;
 }
 
-@keyframes floatRotate {
-    0% { transform: translateY(0) rotateX(0deg) rotateY(0deg); }
-    25% { transform: translateY(-10px) rotateX(3deg) rotateY(2deg); }
-    50% { transform: translateY(-18px) rotateX(6deg) rotateY(-3deg); }
-    75% { transform: translateY(-10px) rotateX(3deg) rotateY(2deg); }
-    100% { transform: translateY(0) rotateX(0deg) rotateY(0deg); }
-}
-
 @keyframes neonWave {
     0% { background-position: -150% 0; }
     50% { background-position: 150% 0; }
     100% { background-position: -150% 0; }
 }
 
-.reveal {
-    opacity: 0;
-    transform: translateY(40px) scale(0.97);
-    transition: all 0.8s cubic-bezier(0.6, 0.05, 0.28, 0.91);
-}
-
-.reveal.active {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-}
-
 @media (max-width: 900px) {
-
     .about-wrapper { gap: 80px; }
 
     .about-intro h1 { font-size: 42px; }

@@ -1,6 +1,6 @@
 .contact-view {
     min-height: 100vh;
-    background: var(--third-color); /* Białe tło */
+    background: var(--third-color); 
     display: flex;
     justify-content: center;
     padding: 100px 20px;
@@ -9,7 +9,6 @@
     overflow: hidden;
 }
 
-/* WRAPPER */
 .contact-wrapper {
     max-width: 900px;
     width: 100%;
@@ -20,7 +19,6 @@
     z-index: 1;
 }
 
-/* HEADER */
 .contact-header h1 {
     font-size: 64px;
     font-weight: 900;
@@ -35,7 +33,6 @@
     color: var(--secondary-color);
 }
 
-/* CONTACT CARDS */
 .contact-cards {
     display: flex;
     justify-content: space-between;
@@ -73,7 +70,6 @@
     color: var(--secondary-color);
 }
 
-/* FOOTER */
 .contact-footer p {
     text-align: center;
     font-size: 22px;
@@ -81,7 +77,6 @@
     line-height: 1.6;
 }
 
-/* SCROLL REVEAL */
 .reveal {
     opacity: 0;
     transform: translateY(60px) scale(0.95);
@@ -93,7 +88,6 @@
     transform: translateY(0) scale(1);
 }
 
-/* MOBILE */
 @media (max-width: 900px) {
     .contact-header h1 { font-size: 42px; }
     .contact-header p { font-size: 18px; }
