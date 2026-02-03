@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
 import './RegisterView.css';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import RoundedButton from '../components/RoundedButton'; 
 import { RoundedTextBox } from '../components/RoundedTextBox'; 
 import PeopleLearn from '../../resources/images/people-learn.png'; 
 
 export function RegisterView() {
     document.title = "Rejestracja - SkillSwap";
+    const navigate = useNavigate();
 
     const [step, setStep] = useState(1);
     const [formData, setFormData] = useState({
@@ -73,7 +75,7 @@ export function RegisterView() {
                         />
 
                         <RoundedButton text='Dalej' onClick={nextStep} />
-                        <span className="register-back" onClick={() => window.location.href = '/shared/login'}>
+                        <span className="register-back" onClick={() => navigate('/shared/login')}>
                             Wróć do Logowania
                         </span>
                     </>
@@ -130,13 +132,13 @@ export function RegisterView() {
             <div className="register-overlay">
                 
                 <div className="register-left">
-                    <a href='/'>
+                    <Link to='/'>
                         <img 
                             src={PeopleLearn} 
                             alt="SkillSwap logo" 
                             className="register-icon"
                         />
-                    </a>
+                    </Link>
                     
                     <h3>Twórz, Ucz, Wymieniaj</h3>
                     <ul className="register-features">

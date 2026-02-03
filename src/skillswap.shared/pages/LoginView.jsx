@@ -1,6 +1,6 @@
 import './LoginView.css';
 import Cookies from 'js-cookie';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { RoundedTextBox } from '../components/RoundedTextBox';
 import RoundedButton from '../components/RoundedButton';
@@ -27,13 +27,13 @@ export function LoginView() {
             <div className="login-overlay">
 
                 <div className="login-left">
-                    <a href='/'>
+                    <Link to='/'>
                         <img 
                             src={PeopleLearn} 
                             alt="SkillSwap logo" 
                             className="login-icon"
                         />
-                    </a>
+                    </Link>
 
                     <ul className="login-features">
                         <li>Ucz się od innych – zupełnie za darmo</li>
@@ -45,7 +45,7 @@ export function LoginView() {
                 </div>
 
                 <div className="login-right">
-                    <a href='/'><h2>SkillSwap</h2></a>
+                    <Link to='/'><h2>SkillSwap</h2></Link>
                     <p>Zaloguj się, aby mieć pełne możliwości!</p>
 
                     <RoundedTextBox type="email" placeholder="user@example.com"/>
@@ -54,7 +54,7 @@ export function LoginView() {
                     <RoundedButton text='Zaloguj się' onClick={loginFunc}/>
 
                     <span className="login-register">
-                        Nie masz konta? <a href='/shared/register'><b>Zarejestruj się</b></a>
+                        Nie masz konta? <Link to='/shared/register'><b>Zarejestruj się</b></Link>
                     </span>
                 </div>
 
