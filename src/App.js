@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import { NotificationContainer } from 'react-notifications';
 import React from 'react';
 
@@ -28,7 +28,7 @@ import AuthorizedView from './skillswap.shared/components/authentication/Authori
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
         <div className='App'>
           <AuthContext>
             <Routes>
@@ -59,7 +59,7 @@ function App() {
           </AuthContext>
         </div>
       <NotificationContainer />
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
