@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/skillswap-build/static/css/main.b53d0f93.css",
-    "main.js": "/skillswap-build/static/js/main.17efdac8.js",
+    "main.js": "/skillswap-build/static/js/main.7758153b.js",
     "static/js/453.26c88b1e.chunk.js": "/skillswap-build/static/js/453.26c88b1e.chunk.js",
     "static/media/adam-man.jpg": "/skillswap-build/static/media/adam-man.44e51cd09e31c3c2920e.jpg",
     "static/media/michael-man.jpg": "/skillswap-build/static/media/michael-man.98ceacd56f9cfd138fdb.jpg",
@@ -23,11 +23,11 @@
     "static/media/skillswap.png": "/skillswap-build/static/media/skillswap.f918189b0848a55dd3cf.png",
     "index.html": "/skillswap-build/index.html",
     "main.b53d0f93.css.map": "/skillswap-build/static/css/main.b53d0f93.css.map",
-    "main.17efdac8.js.map": "/skillswap-build/static/js/main.17efdac8.js.map",
+    "main.7758153b.js.map": "/skillswap-build/static/js/main.7758153b.js.map",
     "453.26c88b1e.chunk.js.map": "/skillswap-build/static/js/453.26c88b1e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b53d0f93.css",
-    "static/js/main.17efdac8.js"
+    "static/js/main.7758153b.js"
   ]
 }
