@@ -19,7 +19,7 @@ export function LoginView() {
             sameSite: 'strict'
         });
 
-        window.location.replace('/app');
+        navigate('/app', { replace: true }); 
     };
 
     return (
